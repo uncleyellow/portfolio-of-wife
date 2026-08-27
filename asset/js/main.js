@@ -85,12 +85,144 @@
       el.setAttribute('placeholder', lang === 'vi' ? el.dataset.viPlaceholder : el.dataset.enPlaceholder);
     });
     setActiveLangButton(lang);
+    if (typeof window.updateChartsLang === 'function') {
+      window.updateChartsLang(lang);
+    }
   }
 
   [langButtons.vi[0], langButtons.vi[1]].forEach(b => b && b.addEventListener('click', () => applyLang('vi')));
   [langButtons.en[0], langButtons.en[1]].forEach(b => b && b.addEventListener('click', () => applyLang('en')));
 
   applyLang('vi');
+
+  /* ---------- charts (Kết quả giảng dạy) ---------- */
+  let charts = {};
+  if (window.Chart) {
+    const rose = getComputedStyle(document.documentElement).getPropertyValue('--rose').trim() || '#D6336C';
+    const roseDark = getComputedStyle(document.documentElement).getPropertyValue('--rose-dark').trim() || '#7A1E4B';
+    const gold = getComputedStyle(document.documentElement).getPropertyValue('--gold').trim() || '#D9A441';
+    const plumMuted = getComputedStyle(document.documentElement).getPropertyValue('--plum-muted').trim() || '#8B5A72';
+
+    Chart.defaults.font.family = "'Be Vietnam Pro', sans-serif";
+    Chart.defaults.color = plumMuted;
+
+    const chartLabels = {
+      toeicCohorts: { vi: ['Khoá 1', 'Khoá 2', 'Khoá 3', 'Khoá 4', 'Khoá 5'], en: ['Batch 1', 'Batch 2', 'Batch 3', 'Batch 4', 'Batch 5'] },
+      before: { vi: 'Trước khoá học', en: 'Before' },
+      after: { vi: 'Sau khoá học', en: 'After' },
+      years: { vi: ['2021', '2022', '2023', '2024', '2025'], en: ['2021', '2022', '2023', '2024', '2025'] },
+      studentsLabel: { vi: 'Số học viên', en: 'Students' },
+      formatLabels: { vi: ['Kèm 1-1', 'Nhóm nhỏ', 'Luyện thi TOEIC', 'Online'], en: ['1-on-1', 'Small group', 'TOEIC prep', 'Online'] },
+      radarLabels: { vi: ['Nghe', 'Nói', 'Đọc', 'Viết'], en: ['Listening', 'Speaking', 'Reading', 'Writing'] },
+      radarLabel: { vi: 'Tiến bộ trung bình', en: 'Average improvement' }
+    };
+
+    const toeicCtx = document.getElementById('chart-toeic');
+    if (toeicCtx) {
+      charts.toeic = new Chart(toeicCtx, {
+        type: 'bar',
+        data: {
+          labels: chartLabels.toeicCohorts.vi,
+          datasets: [
+            { label: chartLabels.before.vi, data: [520, 545, 500, 560, 530], backgroundColor: '#F1A9CC', borderRadius: 6 },
+            { label: chartLabels.after.vi, data: [780, 810, 760, 830, 795], backgroundColor: rose, borderRadius: 6 }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom' } },
+          scales: { y: { beginAtZero: true, max: 900, grid: { color: '#FCE7F0' } }, x: { grid: { display: false } } }
+        }
+      });
+    }
+
+    const studentsCtx = document.getElementById('chart-students');
+    if (studentsCtx) {
+      charts.students = new Chart(studentsCtx, {
+        type: 'line',
+        data: {
+          labels: chartLabels.years.vi,
+          datasets: [{
+            label: chartLabels.studentsLabel.vi,
+            data: [38, 55, 70, 88, 105],
+            borderColor: roseDark, backgroundColor: 'rgba(214,51,108,.15)',
+            fill: true, tension: 0.4, pointBackgroundColor: rose, pointRadius: 5
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, grid: { color: '#FCE7F0' } }, x: { grid: { display: false } } }
+        }
+      });
+    }
+
+    const formatCtx = document.getElementById('chart-format');
+    if (formatCtx) {
+      charts.format = new Chart(formatCtx, {
+        type: 'doughnut',
+        data: {
+          labels: chartLabels.formatLabels.vi,
+          datasets: [{ data: [35, 25, 30, 10], backgroundColor: [rose, gold, roseDark, '#F1A9CC'], borderWidth: 0 }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+      });
+    }
+
+    const radarCtx = document.getElementById('chart-radar');
+    if (radarCtx) {
+      charts.radar = new Chart(radarCtx, {
+        type: 'radar',
+        data: {
+          labels: chartLabels.radarLabels.vi,
+          datasets: [{
+            label: chartLabels.radarLabel.vi,
+            data: [88, 87, 92, 85],
+            backgroundColor: 'rgba(214,51,108,.2)', borderColor: rose, pointBackgroundColor: rose
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { r: { beginAtZero: true, max: 100, grid: { color: '#FCE7F0' }, angleLines: { color: '#FCE7F0' } } }
+        }
+      });
+    }
+
+    // cập nhật nhãn biểu đồ khi đổi ngôn ngữ
+    window.updateChartsLang = function (lang) {
+      if (charts.toeic) {
+        charts.toeic.data.labels = chartLabels.toeicCohorts[lang];
+        charts.toeic.data.datasets[0].label = chartLabels.before[lang];
+        charts.toeic.data.datasets[1].label = chartLabels.after[lang];
+        charts.toeic.update();
+      }
+      if (charts.students) {
+        charts.students.data.datasets[0].label = chartLabels.studentsLabel[lang];
+        charts.students.update();
+      }
+      if (charts.format) {
+        charts.format.data.labels = chartLabels.formatLabels[lang];
+        charts.format.update();
+      }
+      if (charts.radar) {
+        charts.radar.data.labels = chartLabels.radarLabels[lang];
+        charts.radar.data.datasets[0].label = chartLabels.radarLabel[lang];
+        charts.radar.update();
+      }
+    };
+  }
+
+  /* ---------- back to top ---------- */
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   /* ---------- falling petals (toàn trang) ---------- */
   (function initPetals(){

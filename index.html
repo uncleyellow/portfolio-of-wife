@@ -4,6 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nguyễn Minh Thúy | English Teacher Portfolio</title>
+<meta name="description" content="Nguyễn Minh Thúy — Giáo viên tiếng Anh 5+ năm kinh nghiệm, TOEIC 800+, chuyên GrapeSEED & luyện thi TOEIC tại Hà Nội. Xem portfolio, kinh nghiệm, kết quả giảng dạy và liên hệ.">
+<meta name="keywords" content="giáo viên tiếng Anh, gia sư TOEIC, GrapeSEED, dạy tiếng Anh Hà Nội, Nguyễn Minh Thúy">
+<meta name="author" content="Nguyễn Minh Thúy">
+<meta name="theme-color" content="#D6336C">
+<link rel="canonical" href="https://example.com/">
+
+<!-- Open Graph / chia sẻ link (Facebook, Zalo, LinkedIn...) -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Nguyễn Minh Thúy | English Teacher Portfolio">
+<meta property="og:description" content="Giáo viên tiếng Anh 5+ năm kinh nghiệm, TOEIC 800+, chuyên GrapeSEED & luyện thi TOEIC.">
+<meta property="og:locale" content="vi_VN">
+<!-- Gợi ý: thêm og:image trỏ tới 1 ảnh đại diện thật (URL tuyệt đối) để hiện ảnh preview khi chia sẻ link -->
+<!-- <meta property="og:image" content="https://your-domain.com/asset/img/og-cover.jpg"> -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nguyễn Minh Thúy | English Teacher Portfolio">
+<meta name="twitter:description" content="Giáo viên tiếng Anh 5+ năm kinh nghiệm, TOEIC 800+, chuyên GrapeSEED & luyện thi TOEIC.">
+
+<!-- Favicon (hoa hồng nhỏ, không cần file riêng) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23D6336C'/%3E%3Cpath d='M16 6c4 0 7 4 7 10s-3 10-7 10-7-4-7-10 3-10 7-10Z' fill='%23FCE7F0'/%3E%3C/svg%3E">
+
+<!-- Dữ liệu có cấu trúc cho SEO (Google hiểu đây là hồ sơ cá nhân) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Nguyễn Minh Thúy",
+  "jobTitle": "English Teacher",
+  "worksFor": { "@type": "Organization", "name": "GrapeSEED" },
+  "email": "mailto:thuy.nguyen@example.com",
+  "telephone": "+84388249616",
+  "address": { "@type": "PostalAddress", "addressLocality": "Hà Nội", "addressCountry": "VN" },
+  "knowsLanguage": ["vi", "en"],
+  "hasCredential": "TOEIC 800+"
+}
+</script>
 
 <!-- ============================================================
      GHI CHÚ CHO BẠN (Nguyễn Minh Thúy) — ĐỌC TRƯỚC KHI DÙNG
@@ -22,19 +57,26 @@
      5) Hiệu ứng cánh hoa rơi chạy tự động toàn trang (xem main.js,
         hàm initPetals) — có thể chỉnh số lượng cánh hoa qua biến
         maxPetals nếu muốn nhiều/ít hơn.
-     6) Các mục mới: Dịch vụ (#services), Phương pháp (#methodology),
-        Chứng chỉ (#certificates), Thư viện (#gallery), Đánh giá
-        (#testimonials), Hỏi đáp (#faq) — sửa nội dung trực tiếp
-        trong từng section tương ứng.
+     6) Các mục: Dịch vụ (#services), Phương pháp (#methodology),
+        Kết quả giảng dạy (#results, có biểu đồ), Chứng chỉ
+        (#certificates), Thư viện (#gallery), Đánh giá (#testimonials),
+        Hỏi đáp (#faq) — sửa nội dung trực tiếp trong từng section.
+     7) SEO: đã có sẵn thẻ meta mô tả, Open Graph, favicon và dữ liệu
+        JSON-LD. Nhớ đổi "https://example.com/" (link rel="canonical")
+        thành domain thật khi bạn deploy trang này lên internet.
+     8) IN TRANG: bấm Ctrl+P (hoặc Cmd+P) để in — trang tự ẩn hiệu ứng
+        cánh hoa, menu, nút nổi để bản in gọn gàng, giống hồ sơ.
      ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="./asset/css/main.css">
 </head>
 <body class="antialiased flower">
+<a href="#home" class="skip-link" data-vi="Bỏ qua để đến nội dung chính" data-en="Skip to main content">Bỏ qua để đến nội dung chính</a>
  <!-- ✅ MÀN CHÀO ĐEN – ĐẶT NGAY ĐẦU BODY -->
 <div id="introScreen" class="intro-screen" aria-hidden="false">
   <div id="introGreeting" class="intro-greeting">
@@ -51,6 +93,7 @@
       <a href="#services" class="nav-link" data-vi="Dịch vụ" data-en="Services">Dịch vụ</a>
       <a href="#skills" class="nav-link" data-vi="Kỹ năng" data-en="Skills">Kỹ năng</a>
       <a href="#experience" class="nav-link" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</a>
+      <a href="#results" class="nav-link" data-vi="Kết quả" data-en="Results">Kết quả</a>
       <a href="#testimonials" class="nav-link" data-vi="Đánh giá" data-en="Testimonials">Đánh giá</a>
       <a href="#contact" class="nav-link" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
     </nav>
@@ -79,6 +122,7 @@
       <a href="#services" data-vi="Dịch vụ" data-en="Services">Dịch vụ</a>
       <a href="#skills" data-vi="Kỹ năng" data-en="Skills">Kỹ năng</a>
       <a href="#experience" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</a>
+      <a href="#results" data-vi="Kết quả" data-en="Results">Kết quả</a>
       <a href="#certificates" data-vi="Chứng chỉ" data-en="Certificates">Chứng chỉ</a>
       <a href="#gallery" data-vi="Thư viện" data-en="Gallery">Thư viện</a>
       <a href="#testimonials" data-vi="Đánh giá" data-en="Testimonials">Đánh giá</a>
@@ -134,8 +178,7 @@
         <div class="washi-tape"></div>
         <!-- THAY ẢNH CỦA BẠN VÀO ĐÂY: đổi src bên dưới thành ảnh của bạn -->
         <img id="profile-photo"
-             src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23FCE7F0'/%3E%3Ccircle cx='150' cy='115' r='55' fill='%23F1A9CC'/%3E%3Cpath d='M60 280c10-70 70-100 90-100s80 30 90 100z' fill='%23F1A9CC'/%3E%3C/svg%3E"
-             alt="Ảnh chân dung Nguyễn Minh Thúy"
+             src="asset/img/profile.jpg"
              class="w-full h-72 sm:h-96 object-cover rounded-sm">
         <p class="font-display italic text-center text-[color:var(--rose-dark)] pt-3 text-lg">Minh Thúy ✎</p>
       </div>
@@ -549,6 +592,64 @@
   </div>
 </section>
 
+<!-- ================= RESULTS / IMPACT (charts) ================= -->
+<section id="results" class="relative py-24 overflow-hidden">
+  <div class="blob w-72 h-72 bg-[color:var(--gold)]/20 top-[-3rem] left-[-4rem]"></div>
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Kết quả" data-en="Results">Kết quả</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold mb-4" data-vi="Kết quả giảng dạy bằng số liệu" data-en="Teaching impact, in numbers">Kết quả giảng dạy bằng số liệu</h2>
+      <p class="text-[color:var(--plum-muted)]" data-vi="Số liệu tổng hợp từ quá trình giảng dạy và các lớp luyện thi TOEIC gần đây." data-en="Data summarized from recent teaching and TOEIC prep classes.">Số liệu tổng hợp từ quá trình giảng dạy và các lớp luyện thi TOEIC gần đây.</p>
+    </div>
+
+    <!-- impact stat strip -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+      <div class="reveal bg-white rounded-2xl p-6 text-center shadow-sm">
+        <p class="font-display text-3xl sm:text-4xl font-semibold text-[color:var(--rose)]" data-count="260" id="stat-toeic-gain">0</p>
+        <p class="text-xs sm:text-sm text-[color:var(--plum-muted)] mt-1" data-vi="+ điểm TOEIC tăng trung bình" data-en="+ avg. TOEIC score gain">+ điểm TOEIC tăng trung bình</p>
+      </div>
+      <div class="reveal reveal-delay-1 bg-white rounded-2xl p-6 text-center shadow-sm">
+        <p class="font-display text-3xl sm:text-4xl font-semibold text-[color:var(--rose)]" data-count="95" id="stat-passrate">0</p>
+        <p class="text-xs sm:text-sm text-[color:var(--plum-muted)] mt-1" data-vi="% học viên đạt mục tiêu" data-en="% students hit their target">% học viên đạt mục tiêu</p>
+      </div>
+      <div class="reveal reveal-delay-2 bg-white rounded-2xl p-6 text-center shadow-sm">
+        <p class="font-display text-3xl sm:text-4xl font-semibold text-[color:var(--rose)]" data-count="12" id="stat-cohorts">0</p>
+        <p class="text-xs sm:text-sm text-[color:var(--plum-muted)] mt-1" data-vi="Khoá luyện thi đã dẫn dắt" data-en="TOEIC cohorts led">Khoá luyện thi đã dẫn dắt</p>
+      </div>
+      <div class="reveal reveal-delay-3 bg-white rounded-2xl p-6 text-center shadow-sm">
+        <p class="font-display text-3xl sm:text-4xl font-semibold text-[color:var(--rose)]" data-count="98" id="stat-satisfaction">0</p>
+        <p class="text-xs sm:text-sm text-[color:var(--plum-muted)] mt-1" data-vi="% phụ huynh hài lòng" data-en="% parent satisfaction">% phụ huynh hài lòng</p>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6 mb-6">
+      <div class="chart-card reveal">
+        <h3 class="font-display text-xl font-semibold mb-1" data-vi="Điểm TOEIC: trước & sau khoá học" data-en="TOEIC score: before & after">Điểm TOEIC: trước &amp; sau khoá học</h3>
+        <p class="text-xs text-[color:var(--plum-muted)] mb-4" data-vi="Trung bình theo từng khoá luyện thi gần nhất" data-en="Average per most recent cohorts">Trung bình theo từng khoá luyện thi gần nhất</p>
+        <div class="chart-wrap"><canvas id="chart-toeic"></canvas></div>
+      </div>
+      <div class="chart-card reveal reveal-delay-1">
+        <h3 class="font-display text-xl font-semibold mb-1" data-vi="Số học viên đã đào tạo theo năm" data-en="Students trained per year">Số học viên đã đào tạo theo năm</h3>
+        <p class="text-xs text-[color:var(--plum-muted)] mb-4" data-vi="Tăng trưởng đều đặn qua từng năm giảng dạy" data-en="Steady growth across each teaching year">Tăng trưởng đều đặn qua từng năm giảng dạy</p>
+        <div class="chart-wrap"><canvas id="chart-students"></canvas></div>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="chart-card reveal reveal-delay-2">
+        <h3 class="font-display text-xl font-semibold mb-1" data-vi="Phân bổ hình thức giảng dạy" data-en="Teaching format breakdown">Phân bổ hình thức giảng dạy</h3>
+        <p class="text-xs text-[color:var(--plum-muted)] mb-4" data-vi="Tỷ lệ học viên theo từng loại lớp học" data-en="Share of students by class type">Tỷ lệ học viên theo từng loại lớp học</p>
+        <div class="chart-wrap chart-wrap-sm"><canvas id="chart-format"></canvas></div>
+      </div>
+      <div class="chart-card reveal reveal-delay-3">
+        <h3 class="font-display text-xl font-semibold mb-1" data-vi="Đánh giá 4 kỹ năng của học viên" data-en="Student skill radar">Đánh giá 4 kỹ năng của học viên</h3>
+        <p class="text-xs text-[color:var(--plum-muted)] mb-4" data-vi="Mức tiến bộ trung bình sau khoá học (thang 100)" data-en="Average improvement after the course (scale of 100)">Mức tiến bộ trung bình sau khoá học (thang 100)</p>
+        <div class="chart-wrap chart-wrap-sm"><canvas id="chart-radar"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CERTIFICATES ================= -->
 <section id="certificates" class="relative py-24 bg-[color:var(--pink-100)]/60">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
@@ -845,8 +946,14 @@
 
 <!-- ================= FOOTER ================= -->
 <footer class="py-8 border-t border-[color:var(--pink-200)] text-center text-sm text-[color:var(--plum-muted)]">
-  <p>&copy; <span id="year"></span> Nguyễn Minh Thúy. <span data-vi="Được tạo bằng " data-en="Made with ">Được tạo bằng </span>Uncle Yellow DK</p>
+  <p>&copy; <span id="year"></span> Nguyễn Minh Thúy. <span data-vi="Được tạo bằng " data-en="Made with ">Được tạo bằng </span>♥</p>
 </footer>
+
+<!-- Nút cuộn lên đầu trang -->
+<button id="back-to-top" aria-label="Back to top" class="back-to-top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+</button>
+
 <script src="./asset/js/main.js"></script>
 <script src="./asset/js/intro-greeting.js"></script>
 </body>
