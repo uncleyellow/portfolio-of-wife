@@ -84,6 +84,20 @@
   .ribbon-badge{
     background:linear-gradient(135deg,#F6D98A,var(--gold));
     box-shadow:0 10px 22px -8px rgba(217,164,65,.6);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .ribbon-badge:hover{ transform:translateY(-5px); }
+  .ribbon-badge-gold{
+    background:linear-gradient(135deg,#F6D98A,#D9A441);
+    box-shadow:0 10px 22px -8px rgba(217,164,65,.6);
+  }
+  .ribbon-badge-silver{
+    background:linear-gradient(135deg,#F1F3F5,#B9C0C7);
+    box-shadow:0 10px 22px -8px rgba(120,130,140,.5);
+  }
+  .ribbon-badge-bronze{
+    background:linear-gradient(135deg,#E7B98C,#B5651D);
+    box-shadow:0 10px 22px -8px rgba(181,101,29,.55);
   }
 
   /* ---------- header shadow on scroll ---------- */
