@@ -9,11 +9,23 @@
      GHI CHÚ CHO BẠN (Nguyễn Minh Thúy) — ĐỌC TRƯỚC KHI DÙNG
      1) THAY ẢNH: tìm dòng có chữ "THAY ẢNH CỦA BẠN VÀO ĐÂY" (Ctrl+F)
         và đổi thuộc tính src="..." thành đường dẫn ảnh của bạn.
+        Phần thư viện (#gallery) cũng dùng ảnh minh hoạ tạm — tìm
+        "Gợi ý: thay các src bên dưới" để đổi ảnh hoạt động thật.
      2) THAY EMAIL NHẬN LIÊN HỆ: tìm chữ "THAY-EMAIL-CUA-BAN"
         trong form liên hệ (action="https://formsubmit.co/...")
         và thay bằng email thật của bạn. Lần đầu gửi thử, FormSubmit
         sẽ gửi 1 email xác nhận — bạn bấm xác nhận là xong, không cần đăng ký.
      3) Có thể đổi ngôn ngữ Việt/Anh bằng nút VI/EN trên thanh menu.
+     4) CV: file mẫu đặt tại ./asset/cv/CV-Nguyen-Minh-Thuy.pdf — hãy
+        thay bằng CV thật của bạn (giữ nguyên tên file, hoặc đổi cả
+        đường dẫn trong 2 nút "Xem CV" / "Tải CV" ở mục Liên hệ).
+     5) Hiệu ứng cánh hoa rơi chạy tự động toàn trang (xem main.js,
+        hàm initPetals) — có thể chỉnh số lượng cánh hoa qua biến
+        maxPetals nếu muốn nhiều/ít hơn.
+     6) Các mục mới: Dịch vụ (#services), Phương pháp (#methodology),
+        Chứng chỉ (#certificates), Thư viện (#gallery), Đánh giá
+        (#testimonials), Hỏi đáp (#faq) — sửa nội dung trực tiếp
+        trong từng section tương ứng.
      ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,11 +45,13 @@
   <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
     <a href="#home" class="font-display text-2xl sm:text-3xl font-semibold text-[color:var(--rose-dark)]">Minh Thúy</a>
 
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[color:var(--plum)]">
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-[color:var(--plum)]">
       <a href="#home" class="nav-link" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
       <a href="#about" class="nav-link" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
+      <a href="#services" class="nav-link" data-vi="Dịch vụ" data-en="Services">Dịch vụ</a>
       <a href="#skills" class="nav-link" data-vi="Kỹ năng" data-en="Skills">Kỹ năng</a>
       <a href="#experience" class="nav-link" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</a>
+      <a href="#testimonials" class="nav-link" data-vi="Đánh giá" data-en="Testimonials">Đánh giá</a>
       <a href="#contact" class="nav-link" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
     </nav>
 
@@ -49,7 +63,7 @@
       <a href="#contact" class="hidden md:inline-block btn-primary rounded-full px-5 py-2 text-sm font-semibold" data-vi="Liên hệ ngay" data-en="Get in touch">Liên hệ ngay</a>
 
       <!-- mobile hamburger -->
-      <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menu">
+      <button id="menu-toggle" class="lg:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menu">
         <span class="block w-6 h-0.5 bg-[color:var(--rose-dark)] rounded"></span>
         <span class="block w-6 h-0.5 bg-[color:var(--rose-dark)] rounded"></span>
         <span class="block w-6 h-0.5 bg-[color:var(--rose-dark)] rounded"></span>
@@ -58,12 +72,17 @@
   </div>
 
   <!-- mobile menu panel -->
-  <div id="mobile-menu" class="md:hidden bg-[color:var(--pink-50)] border-t border-[color:var(--pink-200)]">
+  <div id="mobile-menu" class="lg:hidden bg-[color:var(--pink-50)] border-t border-[color:var(--pink-200)]">
     <div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
       <a href="#home" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
       <a href="#about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
+      <a href="#services" data-vi="Dịch vụ" data-en="Services">Dịch vụ</a>
       <a href="#skills" data-vi="Kỹ năng" data-en="Skills">Kỹ năng</a>
       <a href="#experience" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</a>
+      <a href="#certificates" data-vi="Chứng chỉ" data-en="Certificates">Chứng chỉ</a>
+      <a href="#gallery" data-vi="Thư viện" data-en="Gallery">Thư viện</a>
+      <a href="#testimonials" data-vi="Đánh giá" data-en="Testimonials">Đánh giá</a>
+      <a href="#faq" data-vi="Hỏi đáp" data-en="FAQ">Hỏi đáp</a>
       <a href="#contact" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
       <div class="flex items-center gap-2 pt-2">
         <button id="lang-vi-m" class="px-3 py-1.5 rounded-full bg-[color:var(--rose)] text-white text-xs font-semibold">VI</button>
@@ -163,6 +182,52 @@
           <p class="font-display text-4xl font-semibold text-[color:var(--rose)]" data-count="1" id="stat-grapeseed">0</p>
           <p class="text-sm text-[color:var(--plum-muted)] mt-1" data-vi="Hệ thống GrapeSEED" data-en="GrapeSEED system">Hệ thống GrapeSEED</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="relative py-24 overflow-hidden">
+  <div class="blob w-72 h-72 bg-[color:var(--gold)]/20 -top-10 right-[-4rem]"></div>
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Dịch vụ" data-en="Services">Dịch vụ</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold mb-4" data-vi="Tôi có thể giúp gì cho bạn" data-en="What I can offer">Tôi có thể giúp gì cho bạn</h2>
+      <p class="text-[color:var(--plum-muted)]" data-vi="Các hình thức giảng dạy được thiết kế linh hoạt theo mục tiêu và trình độ của từng học viên." data-en="Flexible teaching formats tailored to each learner's goals and level.">Các hình thức giảng dạy được thiết kế linh hoạt theo mục tiêu và trình độ của từng học viên.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="service-card reveal">
+        <div class="service-icon mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-2" data-vi="Kèm 1-1" data-en="1-on-1 Tutoring">Kèm 1-1</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Lộ trình cá nhân hoá, tập trung đúng điểm yếu, tiến bộ nhanh và theo sát từng buổi học." data-en="A personalized roadmap that targets weak points, with fast progress tracked every session.">Lộ trình cá nhân hoá, tập trung đúng điểm yếu, tiến bộ nhanh và theo sát từng buổi học.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 21c0-3.3 3.1-6 7-6s7 2.7 7 6"/><path d="M13 15.2c3-.3 5.5 1.6 6 5.8"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-2" data-vi="Lớp nhóm nhỏ" data-en="Small Group Classes">Lớp nhóm nhỏ</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Học viên tương tác, luyện phản xạ giao tiếp trong môi trường vui vẻ, khích lệ lẫn nhau." data-en="Interactive sessions that build communication reflexes in an encouraging group setting.">Học viên tương tác, luyện phản xạ giao tiếp trong môi trường vui vẻ, khích lệ lẫn nhau.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-2" data-vi="Luyện thi TOEIC" data-en="TOEIC Exam Prep">Luyện thi TOEIC</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Chiến lược làm bài, ngân hàng đề sát thực tế, cam kết lộ trình tăng điểm rõ ràng." data-en="Test-taking strategy and realistic practice sets, with a clear score-improvement roadmap.">Chiến lược làm bài, ngân hàng đề sát thực tế, cam kết lộ trình tăng điểm rõ ràng.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 10L3 5l9-5 9 5-9 5z"/><path d="M3 15l9 5 9-5"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-2" data-vi="Tư vấn giáo trình" data-en="Curriculum Consulting">Tư vấn giáo trình</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Hỗ trợ phụ huynh & trung tâm xây dựng lộ trình học tiếng Anh phù hợp độ tuổi." data-en="Helping parents and centers design age-appropriate English learning roadmaps.">Hỗ trợ phụ huynh &amp; trung tâm xây dựng lộ trình học tiếng Anh phù hợp độ tuổi.</p>
       </div>
     </div>
   </div>
@@ -362,8 +427,41 @@
   </div>
 </section>
 
+<!-- ================= METHODOLOGY ================= -->
+<section id="methodology" class="relative py-24 bg-[color:var(--pink-100)]/60">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Phương pháp" data-en="Methodology">Phương pháp</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold" data-vi="Triết lý giảng dạy của tôi" data-en="My teaching philosophy">Triết lý giảng dạy của tôi</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="method-card reveal">
+        <p class="method-num mb-3">01</p>
+        <h3 class="font-display text-xl font-semibold mb-2" data-vi="Lấy học viên làm trung tâm" data-en="Learner-centered">Lấy học viên làm trung tâm</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Mỗi học viên có một tốc độ và phong cách học riêng — bài giảng luôn được điều chỉnh linh hoạt." data-en="Every learner has their own pace and style — lessons are always adapted accordingly.">Mỗi học viên có một tốc độ và phong cách học riêng — bài giảng luôn được điều chỉnh linh hoạt.</p>
+      </div>
+      <div class="method-card reveal reveal-delay-1">
+        <p class="method-num mb-3">02</p>
+        <h3 class="font-display text-xl font-semibold mb-2" data-vi="Học qua trải nghiệm" data-en="Learning by doing">Học qua trải nghiệm</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Trò chơi, tình huống thực tế và hoạt động tương tác giúp kiến thức được ghi nhớ lâu hơn." data-en="Games, real-life scenarios, and interactive activities make knowledge stick.">Trò chơi, tình huống thực tế và hoạt động tương tác giúp kiến thức được ghi nhớ lâu hơn.</p>
+      </div>
+      <div class="method-card reveal reveal-delay-2">
+        <p class="method-num mb-3">03</p>
+        <h3 class="font-display text-xl font-semibold mb-2" data-vi="Phản hồi liên tục" data-en="Continuous feedback">Phản hồi liên tục</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Theo dõi tiến độ sát sao, báo cáo định kỳ cho phụ huynh, điều chỉnh kịp thời khi cần." data-en="Close progress tracking with regular reports to parents, adjusted whenever needed.">Theo dõi tiến độ sát sao, báo cáo định kỳ cho phụ huynh, điều chỉnh kịp thời khi cần.</p>
+      </div>
+      <div class="method-card reveal reveal-delay-3">
+        <p class="method-num mb-3">04</p>
+        <h3 class="font-display text-xl font-semibold mb-2" data-vi="Truyền cảm hứng" data-en="Inspire, don't just teach">Truyền cảm hứng</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Xây dựng niềm yêu thích với tiếng Anh, giúp học viên chủ động và tự tin sử dụng ngôn ngữ." data-en="Building a genuine love for English so learners use the language actively and confidently.">Xây dựng niềm yêu thích với tiếng Anh, giúp học viên chủ động và tự tin sử dụng ngôn ngữ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= EXPERIENCE ================= -->
-<section id="experience" class="relative py-24 bg-[color:var(--pink-100)]/60">
+<section id="experience" class="relative py-24">
   <div class="max-w-4xl mx-auto px-5 sm:px-8">
     <div class="text-center max-w-2xl mx-auto mb-16 reveal">
       <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</p>
@@ -375,7 +473,19 @@
 
       <div class="relative mb-12 reveal">
         <span class="absolute -left-10 top-1 w-3 h-3 rounded-full bg-[color:var(--rose)] timeline-dot"></span>
-        <p class="text-xs font-semibold text-[color:var(--rose)] mb-1" data-vi="2021 — Hiện tại" data-en="2021 — Present">2021 — Hiện tại</p>
+        <p class="text-xs font-semibold text-[color:var(--rose)] mb-1" data-vi="2023 — Hiện tại" data-en="2023 — Present">2023 — Hiện tại</p>
+        <h3 class="font-display text-2xl font-semibold mb-1">GrapeSEED</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] mb-2" data-vi="Trưởng nhóm chuyên môn" data-en="Lead Teacher">Trưởng nhóm chuyên môn</p>
+        <p class="text-[color:var(--plum-muted)] leading-relaxed"
+           data-vi="Dẫn dắt nhóm giáo viên, xây dựng kế hoạch giảng dạy theo chuẩn khung năng lực, huấn luyện giáo viên mới và kiểm định chất lượng lớp học."
+           data-en="Leading a teaching team, building lesson plans aligned to competency standards, mentoring new teachers, and ensuring classroom quality.">
+           Dẫn dắt nhóm giáo viên, xây dựng kế hoạch giảng dạy theo chuẩn khung năng lực, huấn luyện giáo viên mới và kiểm định chất lượng lớp học.
+        </p>
+      </div>
+
+      <div class="relative mb-12 reveal reveal-delay-1">
+        <span class="absolute -left-10 top-1 w-3 h-3 rounded-full bg-[color:var(--rose)] timeline-dot"></span>
+        <p class="text-xs font-semibold text-[color:var(--rose)] mb-1" data-vi="2021 — 2023" data-en="2021 — 2023">2021 — 2023</p>
         <h3 class="font-display text-2xl font-semibold mb-1">GrapeSEED</h3>
         <p class="text-sm text-[color:var(--plum-muted)] mb-2" data-vi="Giáo viên tiếng Anh" data-en="English Teacher">Giáo viên tiếng Anh</p>
         <p class="text-[color:var(--plum-muted)] leading-relaxed"
@@ -385,7 +495,7 @@
         </p>
       </div>
 
-      <div class="relative mb-12 reveal reveal-delay-1">
+      <div class="relative mb-12 reveal reveal-delay-2">
         <span class="absolute -left-10 top-1 w-3 h-3 rounded-full bg-[color:var(--rose)] timeline-dot"></span>
         <p class="text-xs font-semibold text-[color:var(--rose)] mb-1" data-vi="2019 — 2021" data-en="2019 — 2021">2019 — 2021</p>
         <!-- Gợi ý: đổi tên trung tâm/đơn vị bên dưới cho đúng với thực tế của bạn -->
@@ -398,7 +508,7 @@
         </p>
       </div>
 
-      <div class="relative reveal reveal-delay-2">
+      <div class="relative mb-12 reveal reveal-delay-3">
         <span class="absolute -left-10 top-1 w-3 h-3 rounded-full bg-[color:var(--rose)] timeline-dot"></span>
         <p class="text-xs font-semibold text-[color:var(--rose)] mb-1" data-vi="2018 — 2019" data-en="2018 — 2019">2018 — 2019</p>
         <h3 class="font-display text-2xl font-semibold mb-1" data-vi="Gia sư tiếng Anh" data-en="English Tutor">Gia sư tiếng Anh</h3>
@@ -408,6 +518,212 @@
            data-en="1-on-1 and small group tutoring, building grammar and vocabulary foundations for beginners, developing basic communication skills.">
            Dạy kèm 1-1 và nhóm nhỏ, xây dựng nền tảng ngữ pháp – từ vựng cho học viên mất gốc, phát triển kỹ năng giao tiếp cơ bản.
         </p>
+      </div>
+
+      <div class="relative reveal reveal-delay-4">
+        <span class="absolute -left-10 top-1 w-3 h-3 rounded-full bg-[color:var(--rose)] timeline-dot"></span>
+        <p class="text-xs font-semibold text-[color:var(--rose)] mb-1" data-vi="2017 — 2018" data-en="2017 — 2018">2017 — 2018</p>
+        <h3 class="font-display text-2xl font-semibold mb-1" data-vi="Trung tâm Anh ngữ" data-en="English Center">Trung tâm Anh ngữ</h3>
+        <p class="text-sm text-[color:var(--plum-muted)] mb-2" data-vi="Trợ giảng tiếng Anh" data-en="Teaching Assistant">Trợ giảng tiếng Anh</p>
+        <p class="text-[color:var(--plum-muted)] leading-relaxed"
+           data-vi="Hỗ trợ giáo viên chính trong công tác soạn giáo án, quản lý lớp học và chấm chữa bài tập cho học viên thiếu nhi."
+           data-en="Assisted the lead teacher with lesson preparation, classroom management, and grading assignments for young learners.">
+           Hỗ trợ giáo viên chính trong công tác soạn giáo án, quản lý lớp học và chấm chữa bài tập cho học viên thiếu nhi.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATES ================= -->
+<section id="certificates" class="relative py-24 bg-[color:var(--pink-100)]/60">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Chứng chỉ" data-en="Certificates">Chứng chỉ</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold" data-vi="Chứng chỉ & Giải thưởng" data-en="Certificates & Awards">Chứng chỉ &amp; Giải thưởng</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="cert-card reveal">
+        <div class="w-12 h-12 rounded-full icon-circle flex items-center justify-center shrink-0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></svg>
+        </div>
+        <div>
+          <h3 class="font-display text-xl font-semibold mb-1">TOEIC 800+</h3>
+          <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Chứng chỉ năng lực tiếng Anh quốc tế, cập nhật gần nhất năm 2024." data-en="International English proficiency certificate, most recently updated in 2024.">Chứng chỉ năng lực tiếng Anh quốc tế, cập nhật gần nhất năm 2024.</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="w-12 h-12 rounded-full icon-circle flex items-center justify-center shrink-0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l2.4 6.6H21l-5.3 4 2 6.6L12 15.8 6.3 19.2l2-6.6L3 8.6h6.6z"/></svg>
+        </div>
+        <div>
+          <h3 class="font-display text-xl font-semibold mb-1" data-vi="Chứng nhận Phương pháp GrapeSEED" data-en="GrapeSEED Methodology Certification">Chứng nhận Phương pháp GrapeSEED</h3>
+          <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Hoàn thành khoá đào tạo phương pháp giảng dạy chuẩn hệ thống GrapeSEED." data-en="Completed the official GrapeSEED teaching-methodology training program.">Hoàn thành khoá đào tạo phương pháp giảng dạy chuẩn hệ thống GrapeSEED.</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="w-12 h-12 rounded-full icon-circle flex items-center justify-center shrink-0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 4v3M16 4v3"/></svg>
+        </div>
+        <div>
+          <h3 class="font-display text-xl font-semibold mb-1" data-vi="Nghiệp vụ Sư phạm Tiếng Anh" data-en="English Pedagogy Certificate">Nghiệp vụ Sư phạm Tiếng Anh</h3>
+          <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Chứng chỉ nghiệp vụ sư phạm, trang bị kỹ năng thiết kế và tổ chức lớp học hiệu quả." data-en="Pedagogy certificate equipping effective lesson-design and classroom-management skills.">Chứng chỉ nghiệp vụ sư phạm, trang bị kỹ năng thiết kế và tổ chức lớp học hiệu quả.</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal reveal-delay-3">
+        <div class="w-12 h-12 rounded-full icon-circle flex items-center justify-center shrink-0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 4c2-.3 3.8.7 4.6 2.2C10.8 4.7 12.6 3.7 14.6 4c3.4.5 4.9 4 3.4 7.7C15.5 16.4 12 21 12 21z"/></svg>
+        </div>
+        <div>
+          <h3 class="font-display text-xl font-semibold mb-1" data-vi="Giáo viên xuất sắc 2023" data-en="Teacher of the Year 2023">Giáo viên xuất sắc 2023</h3>
+          <p class="text-sm text-[color:var(--plum-muted)] leading-relaxed" data-vi="Được vinh danh bởi hệ thống GrapeSEED nhờ đóng góp trong công tác giảng dạy và đào tạo." data-en="Recognized by GrapeSEED for outstanding contributions to teaching and mentoring.">Được vinh danh bởi hệ thống GrapeSEED nhờ đóng góp trong công tác giảng dạy và đào tạo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery" class="relative py-24 overflow-hidden">
+  <div class="blob w-80 h-80 bg-[color:var(--pink-200)] top-[-4rem] right-[-4rem]"></div>
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Thư viện" data-en="Gallery">Thư viện</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold mb-4" data-vi="Khoảnh khắc trên lớp" data-en="Moments in the classroom">Khoảnh khắc trên lớp</h2>
+      <p class="text-[color:var(--plum-muted)]" data-vi="Một vài hình ảnh hoạt động giảng dạy và sự kiện tại lớp học." data-en="A few snapshots from classroom activities and events.">Một vài hình ảnh hoạt động giảng dạy và sự kiện tại lớp học.</p>
+    </div>
+
+    <!-- Gợi ý: thay các src bên dưới bằng ảnh hoạt động thực tế của bạn -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="gallery-item reveal h-64">
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23FCE7F0'/%3E%3Ccircle cx='120' cy='120' r='45' fill='%23F1A9CC'/%3E%3Ccircle cx='260' cy='150' r='55' fill='%23F8C9DF'/%3E%3C/svg%3E" alt="Hoạt động lớp học 1" loading="lazy">
+        <div class="gallery-caption" data-vi="Giờ học tương tác cùng học viên nhỏ tuổi" data-en="Interactive class with young learners">Giờ học tương tác cùng học viên nhỏ tuổi</div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1 h-64">
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23F8C9DF'/%3E%3Crect x='60' y='90' width='280' height='120' rx='16' fill='%23fff'/%3E%3C/svg%3E" alt="Hoạt động lớp học 2" loading="lazy">
+        <div class="gallery-caption" data-vi="Thuyết trình nhóm cuối khoá" data-en="End-of-course group presentation">Thuyết trình nhóm cuối khoá</div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2 h-64">
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23FCE7F0'/%3E%3Cpolygon points='200,60 260,180 140,180' fill='%23D6336C'/%3E%3C/svg%3E" alt="Hoạt động lớp học 3" loading="lazy">
+        <div class="gallery-caption" data-vi="Sự kiện Ngày hội tiếng Anh" data-en="English Festival Day event">Sự kiện Ngày hội tiếng Anh</div>
+      </div>
+      <div class="gallery-item reveal h-64">
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23F1A9CC'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23fff' fill-opacity='0.5'/%3E%3C/svg%3E" alt="Hoạt động lớp học 4" loading="lazy">
+        <div class="gallery-caption" data-vi="Trao chứng nhận hoàn thành khoá học" data-en="Course completion certificate ceremony">Trao chứng nhận hoàn thành khoá học</div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1 h-64">
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23FFF5F8'/%3E%3Crect x='40' y='60' width='320' height='180' rx='20' fill='%23F8C9DF'/%3E%3C/svg%3E" alt="Hoạt động lớp học 5" loading="lazy">
+        <div class="gallery-caption" data-vi="Buổi họp phụ huynh định kỳ" data-en="Regular parent meeting session">Buổi họp phụ huynh định kỳ</div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2 h-64">
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23F8C9DF'/%3E%3Ccircle cx='150' cy='130' r='40' fill='%23D6336C'/%3E%3Ccircle cx='260' cy='170' r='30' fill='%23D9A441'/%3E%3C/svg%3E" alt="Hoạt động lớp học 6" loading="lazy">
+        <div class="gallery-caption" data-vi="Workshop kỹ năng giao tiếp" data-en="Communication skills workshop">Workshop kỹ năng giao tiếp</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials" class="relative py-24 bg-[color:var(--pink-100)]/60 overflow-hidden">
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Đánh giá" data-en="Testimonials">Đánh giá</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold" data-vi="Học viên & phụ huynh nói gì" data-en="What students & parents say">Học viên &amp; phụ huynh nói gì</h2>
+    </div>
+
+    <div class="flex justify-end gap-3 mb-6 reveal">
+      <button id="testi-prev" class="testi-nav-btn" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="testi-next" class="testi-nav-btn" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <div id="testi-track" class="testi-track reveal reveal-delay-1">
+      <div class="testi-card">
+        <span class="testi-quote">"</span>
+        <p class="testi-stars mb-3">★★★★★</p>
+        <p class="text-[color:var(--plum-muted)] leading-relaxed mb-5" data-vi="Cô Thúy rất kiên nhẫn, con mình từ chỗ sợ tiếng Anh giờ đã chủ động nói chuyện với cô bằng tiếng Anh mỗi ngày." data-en="Ms. Thúy is incredibly patient — my child went from fearing English to happily chatting in English every day.">Cô Thúy rất kiên nhẫn, con mình từ chỗ sợ tiếng Anh giờ đã chủ động nói chuyện với cô bằng tiếng Anh mỗi ngày.</p>
+        <p class="font-semibold text-sm">Chị Lan Anh</p>
+        <p class="text-xs text-[color:var(--plum-muted)]" data-vi="Phụ huynh học viên GrapeSEED" data-en="Parent of a GrapeSEED student">Phụ huynh học viên GrapeSEED</p>
+      </div>
+      <div class="testi-card">
+        <span class="testi-quote">"</span>
+        <p class="testi-stars mb-3">★★★★★</p>
+        <p class="text-[color:var(--plum-muted)] leading-relaxed mb-5" data-vi="Nhờ cô hướng dẫn chiến lược làm bài, mình tăng từ 550 lên 810 điểm TOEIC chỉ trong 3 tháng." data-en="Thanks to her test-taking strategy, I improved my TOEIC score from 550 to 810 in just 3 months.">Nhờ cô hướng dẫn chiến lược làm bài, mình tăng từ 550 lên 810 điểm TOEIC chỉ trong 3 tháng.</p>
+        <p class="font-semibold text-sm">Nguyễn Đức Huy</p>
+        <p class="text-xs text-[color:var(--plum-muted)]" data-vi="Học viên luyện thi TOEIC" data-en="TOEIC prep student">Học viên luyện thi TOEIC</p>
+      </div>
+      <div class="testi-card">
+        <span class="testi-quote">"</span>
+        <p class="testi-stars mb-3">★★★★★</p>
+        <p class="text-[color:var(--plum-muted)] leading-relaxed mb-5" data-vi="Giáo án của cô rất bài bản, luôn cập nhật hoạt động mới mẻ khiến các con hào hứng đến lớp." data-en="Her lesson plans are always well-structured with fresh activities that keep the kids excited to come to class.">Giáo án của cô rất bài bản, luôn cập nhật hoạt động mới mẻ khiến các con hào hứng đến lớp.</p>
+        <p class="font-semibold text-sm">Anh Minh Quân</p>
+        <p class="text-xs text-[color:var(--plum-muted)]" data-vi="Phụ huynh học viên" data-en="Parent of a student">Phụ huynh học viên</p>
+      </div>
+      <div class="testi-card">
+        <span class="testi-quote">"</span>
+        <p class="testi-stars mb-3">★★★★★</p>
+        <p class="text-[color:var(--plum-muted)] leading-relaxed mb-5" data-vi="Cô luôn theo sát và động viên đúng lúc, giúp mình tự tin hơn hẳn khi giao tiếp tiếng Anh." data-en="She always follows up and encourages at just the right moment, making me far more confident speaking English.">Cô luôn theo sát và động viên đúng lúc, giúp mình tự tin hơn hẳn khi giao tiếp tiếng Anh.</p>
+        <p class="font-semibold text-sm">Phạm Thu Trang</p>
+        <p class="text-xs text-[color:var(--plum-muted)]" data-vi="Học viên kèm 1-1" data-en="1-on-1 tutoring student">Học viên kèm 1-1</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" class="relative py-24">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Hỏi đáp" data-en="FAQ">Hỏi đáp</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold" data-vi="Câu hỏi thường gặp" data-en="Frequently asked questions">Câu hỏi thường gặp</h2>
+    </div>
+
+    <div class="reveal">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span data-vi="Bạn nhận dạy học viên độ tuổi nào?" data-en="What age groups do you teach?">Bạn nhận dạy học viên độ tuổi nào?</span>
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-vi="Mình nhận giảng dạy từ học viên mầm non/tiểu học (chương trình GrapeSEED) đến người lớn ôn luyện TOEIC. Lộ trình học sẽ được điều chỉnh phù hợp theo từng độ tuổi." data-en="I teach from preschool/primary students (GrapeSEED program) up to adults preparing for TOEIC. The roadmap is adjusted to fit each age group.">Mình nhận giảng dạy từ học viên mầm non/tiểu học (chương trình GrapeSEED) đến người lớn ôn luyện TOEIC. Lộ trình học sẽ được điều chỉnh phù hợp theo từng độ tuổi.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span data-vi="Hình thức học là online hay offline?" data-en="Do you teach online or offline?">Hình thức học là online hay offline?</span>
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-vi="Mình linh hoạt cả hai hình thức: học trực tiếp tại Hà Nội hoặc học online qua Zoom/Google Meet, kèm tài liệu và bài tập gửi riêng cho từng học viên." data-en="Both formats are available: in-person classes in Hanoi or online sessions via Zoom/Google Meet, with materials and exercises sent individually to each learner.">Mình linh hoạt cả hai hình thức: học trực tiếp tại Hà Nội hoặc học online qua Zoom/Google Meet, kèm tài liệu và bài tập gửi riêng cho từng học viên.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span data-vi="Bao lâu thì thấy tiến bộ rõ rệt?" data-en="How soon will I see real progress?">Bao lâu thì thấy tiến bộ rõ rệt?</span>
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-vi="Tuỳ mục tiêu và tần suất học, nhưng đa số học viên luyện thi TOEIC thấy điểm số cải thiện rõ sau 2-3 tháng học đều đặn 2-3 buổi/tuần." data-en="It depends on the goal and study frequency, but most TOEIC students see a clear score improvement after 2-3 months of consistent 2-3 sessions per week.">Tuỳ mục tiêu và tần suất học, nhưng đa số học viên luyện thi TOEIC thấy điểm số cải thiện rõ sau 2-3 tháng học đều đặn 2-3 buổi/tuần.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span data-vi="Học phí và lịch học như thế nào?" data-en="What about fees and scheduling?">Học phí và lịch học như thế nào?</span>
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-vi="Học phí phụ thuộc vào hình thức (1-1, nhóm nhỏ, luyện thi) và số buổi/tuần. Hãy nhắn tin ở phần Liên hệ để mình tư vấn lịch học và chi phí phù hợp nhất với bạn." data-en="Fees depend on the format (1-on-1, small group, exam prep) and sessions per week. Message me in the Contact section for a schedule and price that best fit you.">Học phí phụ thuộc vào hình thức (1-1, nhóm nhỏ, luyện thi) và số buổi/tuần. Hãy nhắn tin ở phần Liên hệ để mình tư vấn lịch học và chi phí phù hợp nhất với bạn.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -494,6 +810,20 @@
         </div>
         <button type="submit" class="btn-primary w-full rounded-xl py-3 font-semibold" data-vi="Gửi lời nhắn" data-en="Send message">Gửi lời nhắn</button>
         <p class="text-xs text-[color:var(--plum-muted)] text-center" data-vi="Lời nhắn sẽ được gửi trực tiếp qua email của tôi." data-en="Your message will be sent directly to my email.">Lời nhắn sẽ được gửi trực tiếp qua email của tôi.</p>
+
+        <!-- Nút xem / tải CV — thay đường dẫn file bên dưới bằng CV thật của bạn nếu muốn -->
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <a href="./asset/cv/CV-Nguyen-Minh-Thuy.pdf" target="_blank" rel="noopener"
+             class="cv-btn btn-outline w-full rounded-xl py-3 font-semibold text-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span data-vi="Xem CV của tôi" data-en="View my CV">Xem CV của tôi</span>
+          </a>
+          <a href="./asset/cv/CV-Nguyen-Minh-Thuy.pdf" download="CV-Nguyen-Minh-Thuy.pdf"
+             class="cv-btn btn-primary w-full rounded-xl py-3 font-semibold text-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+            <span data-vi="Tải CV của tôi" data-en="Download my CV">Tải CV của tôi</span>
+          </a>
+        </div>
       </form>
     </div>
   </div>
@@ -501,10 +831,9 @@
 
 <!-- ================= FOOTER ================= -->
 <footer class="py-8 border-t border-[color:var(--pink-200)] text-center text-sm text-[color:var(--plum-muted)]">
-  <p>&copy; <span id="year"></span> Nguyễn Minh Thúy. <span data-vi="Được tạo bằng " data-en="Made with ">Được tạo bằng </span>♥</p>
+  <p>&copy; <span id="year"></span> Nguyễn Minh Thúy. <span data-vi="Được tạo bằng " data-en="Made with ">Được tạo bằng </span>Uncle Yellow DK</p>
 </footer>
 <script src="./asset/js/main.js"></script>
 <script src="./asset/js/intro-greeting.js"></script>
-
 </body>
 </html>

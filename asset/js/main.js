@@ -1,4 +1,3 @@
-  
   document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ---------- mobile menu ---------- */
@@ -92,4 +91,80 @@
   [langButtons.en[0], langButtons.en[1]].forEach(b => b && b.addEventListener('click', () => applyLang('en')));
 
   applyLang('vi');
-  
+
+  /* ---------- falling petals (toàn trang) ---------- */
+  (function initPetals(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const layer = document.createElement('div');
+    layer.id = 'petal-layer';
+    layer.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(layer);
+
+    const petalSvg = (fill) => `
+      <svg width="22" height="22" viewBox="0 0 32 32">
+        <path d="M16 2C22 2 27 9 27 16C27 23 22 30 16 30C10 30 5 23 5 16C5 9 10 2 16 2Z" fill="${fill}"/>
+      </svg>`;
+    const colors = ['#F1A9CC', '#F8C9DF', '#D6336C', '#F7B8D6'];
+    const maxPetals = window.innerWidth < 640 ? 14 : 24;
+
+    function spawnPetal() {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      const size = 14 + Math.random() * 14;
+      const left = Math.random() * 100;
+      const fallDuration = 8 + Math.random() * 7;
+      const swayDuration = 2.5 + Math.random() * 2.5;
+      const delay = Math.random() * 2;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      petal.style.left = left + 'vw';
+      petal.style.width = size + 'px';
+      petal.style.height = size + 'px';
+      petal.style.animationDuration = fallDuration + 's, ' + swayDuration + 's';
+      petal.style.animationDelay = delay + 's, 0s';
+      petal.innerHTML = petalSvg(color);
+      layer.appendChild(petal);
+
+      setTimeout(() => petal.remove(), (fallDuration + delay) * 1000 + 200);
+    }
+
+    // seed initial petals then keep spawning
+    for (let i = 0; i < maxPetals; i++) {
+      setTimeout(spawnPetal, i * 400);
+    }
+    setInterval(spawnPetal, 900);
+  })();
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    if (!btn || !answer) return;
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = null;
+        }
+      });
+      if (isOpen) {
+        item.classList.remove('open');
+        answer.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ---------- testimonial carousel nav buttons ---------- */
+  const testiTrack = document.getElementById('testi-track');
+  const testiPrev = document.getElementById('testi-prev');
+  const testiNext = document.getElementById('testi-next');
+  if (testiTrack && testiPrev && testiNext) {
+    const scrollAmount = () => testiTrack.querySelector('.testi-card')?.offsetWidth + 24 || 300;
+    testiPrev.addEventListener('click', () => testiTrack.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+    testiNext.addEventListener('click', () => testiTrack.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+  }

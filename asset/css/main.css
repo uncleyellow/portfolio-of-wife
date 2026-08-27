@@ -167,3 +167,173 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* =========================================================
+   FALLING PETALS EFFECT (toàn trang)
+   ========================================================= */
+#petal-layer{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  pointer-events:none;
+  z-index:60;
+  overflow:hidden;
+}
+.petal{
+  position:absolute;
+  top:-40px;
+  will-change:transform, opacity;
+  opacity:.9;
+  animation-name:petal-fall, petal-sway;
+  animation-timing-function:linear, ease-in-out;
+  animation-iteration-count:1, infinite;
+}
+.petal svg{ display:block; filter:drop-shadow(0 3px 6px rgba(122,30,75,.15)); }
+@keyframes petal-fall{
+  0%{ transform:translateY(-5vh) rotate(0deg); opacity:0; }
+  8%{ opacity:.95; }
+  90%{ opacity:.9; }
+  100%{ transform:translateY(108vh) rotate(360deg); opacity:0; }
+}
+@keyframes petal-sway{
+  0%,100%{ margin-left:0px; }
+  50%{ margin-left:38px; }
+}
+@media (prefers-reduced-motion: reduce){
+  #petal-layer{ display:none; }
+}
+
+/* =========================================================
+   SERVICES / WHAT I OFFER
+   ========================================================= */
+.service-card{
+  background:#fff; border-radius:1.5rem; padding:2rem 1.6rem;
+  box-shadow:0 8px 24px -16px rgba(122,30,75,.25);
+  transition:transform .35s ease, box-shadow .35s ease;
+  position:relative; overflow:hidden;
+}
+.service-card::before{
+  content:''; position:absolute; inset:0; opacity:0;
+  background:linear-gradient(160deg, var(--pink-100), transparent 60%);
+  transition:opacity .35s ease;
+}
+.service-card:hover{ transform:translateY(-8px); box-shadow:0 24px 40px -20px rgba(122,30,75,.35); }
+.service-card:hover::before{ opacity:1; }
+.service-card > *{ position:relative; z-index:1; }
+.service-icon{
+  width:56px; height:56px; border-radius:1.1rem;
+  background:linear-gradient(135deg, var(--rose), var(--rose-dark));
+  display:flex; align-items:center; justify-content:center; color:#fff;
+  box-shadow:0 10px 20px -8px rgba(214,51,108,.55);
+}
+
+/* =========================================================
+   METHODOLOGY / TEACHING PHILOSOPHY
+   ========================================================= */
+.method-card{
+  background:#fff; border-radius:1.5rem; padding:1.8rem;
+  border:1px solid var(--pink-200);
+  transition:transform .3s ease, border-color .3s ease;
+}
+.method-card:hover{ transform:translateY(-6px); border-color:var(--rose); }
+.method-num{
+  font-family:'Cormorant Garamond', serif; font-weight:700; font-size:2.6rem;
+  color:var(--pink-200); line-height:1;
+}
+
+/* =========================================================
+   CERTIFICATES
+   ========================================================= */
+.cert-card{
+  background:#fff; border-radius:1.25rem; padding:1.6rem;
+  box-shadow:0 8px 22px -16px rgba(122,30,75,.25);
+  display:flex; gap:1rem; align-items:flex-start;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.cert-card:hover{ transform:translateY(-5px); box-shadow:0 18px 30px -18px rgba(122,30,75,.35); }
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+.gallery-item{
+  border-radius:1.25rem; overflow:hidden; position:relative;
+  box-shadow:0 8px 22px -14px rgba(122,30,75,.3);
+}
+.gallery-item img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .6s ease;
+}
+.gallery-item:hover img{ transform:scale(1.08); }
+.gallery-caption{
+  position:absolute; inset-inline:0; bottom:0; padding:1rem 1.1rem;
+  background:linear-gradient(0deg, rgba(59,10,40,.78), transparent);
+  color:#fff; font-size:.82rem; font-weight:500;
+  opacity:0; transform:translateY(8px);
+  transition:opacity .35s ease, transform .35s ease;
+}
+.gallery-item:hover .gallery-caption{ opacity:1; transform:translateY(0); }
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+.testi-track{
+  display:flex; gap:1.5rem; overflow-x:auto; scroll-snap-type:x mandatory;
+  padding-bottom:1rem; -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin; scrollbar-color:var(--pink-200) transparent;
+}
+.testi-track::-webkit-scrollbar{ height:6px; }
+.testi-track::-webkit-scrollbar-thumb{ background:var(--pink-200); border-radius:999px; }
+.testi-card{
+  scroll-snap-align:start; flex:0 0 auto;
+  width:min(340px, 82vw);
+  background:#fff; border-radius:1.5rem; padding:1.9rem;
+  box-shadow:0 10px 26px -16px rgba(122,30,75,.3);
+}
+.testi-quote{ color:var(--pink-200); font-family:'Cormorant Garamond', serif; font-size:3rem; line-height:0; }
+.testi-stars{ color:var(--gold); letter-spacing:2px; font-size:.95rem; }
+.testi-nav-btn{
+  width:42px; height:42px; border-radius:999px; border:1.5px solid var(--pink-200);
+  display:flex; align-items:center; justify-content:center; color:var(--rose-dark);
+  transition:all .25s ease; background:#fff;
+}
+.testi-nav-btn:hover{ background:var(--rose); color:#fff; border-color:var(--rose); }
+
+/* =========================================================
+   FAQ ACCORDION
+   ========================================================= */
+.faq-item{ border-bottom:1px solid var(--pink-200); }
+.faq-question{
+  width:100%; text-align:left; display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; padding:1.35rem 0.25rem; font-weight:600; color:var(--plum); cursor:pointer;
+  background:none; border:none; font-size:1rem;
+}
+.faq-question:hover{ color:var(--rose-dark); }
+.faq-icon{
+  width:28px; height:28px; border-radius:999px; background:var(--pink-100); color:var(--rose-dark);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  transition:transform .3s ease, background .3s ease;
+}
+.faq-item.open .faq-icon{ transform:rotate(45deg); background:var(--rose); color:#fff; }
+.faq-answer{
+  max-height:0; overflow:hidden; transition:max-height .4s ease;
+}
+.faq-answer p{ padding:0 0.25rem 1.35rem; color:var(--plum-muted); line-height:1.65; }
+
+/* =========================================================
+   CV BUTTONS (dưới form liên hệ)
+   ========================================================= */
+.cv-btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.cv-btn:hover{ transform:translateY(-3px); }
+
+/* =========================================================
+   SECTION BADGE / DIVIDER helpers
+   ========================================================= */
+.section-divider{
+  width:56px; height:3px; border-radius:999px;
+  background:linear-gradient(90deg, var(--rose), var(--gold));
+  margin:0 auto;
+}
