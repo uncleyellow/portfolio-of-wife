@@ -5,21 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nguyễn Minh Thúy | English Teacher Portfolio</title>
 <meta name="description" content="Nguyễn Minh Thúy — Giáo viên tiếng Anh 5+ năm kinh nghiệm, TOEIC 800+, chuyên GrapeSEED & luyện thi TOEIC tại Hà Nội. Xem portfolio, kinh nghiệm, kết quả giảng dạy và liên hệ.">
-<meta name="keywords" content="giáo viên tiếng Anh, gia sư TOEIC, GrapeSEED, dạy tiếng Anh Hà Nội, Nguyễn Minh Thúy">
+<meta name="keywords" content="giáo viên tiếng Anh, gia sư TOEIC, GrapeSEED, dạy tiếng Anh Hà Nội, gia sư tiếng Anh online, luyện thi TOEIC Hà Nội, tuyển giáo viên tiếng Anh, English teacher Hanoi, Nguyễn Minh Thúy">
 <meta name="author" content="Nguyễn Minh Thúy">
 <meta name="theme-color" content="#D6336C">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="format-detection" content="telephone=yes">
 <link rel="canonical" href="https://example.com/">
+<!-- Gợi ý: nếu có bản tiếng Anh riêng, khai báo thêm hreflang tại đây -->
+<link rel="alternate" hreflang="vi" href="https://example.com/">
+<link rel="alternate" hreflang="x-default" href="https://example.com/">
 
 <!-- Open Graph / chia sẻ link (Facebook, Zalo, LinkedIn...) -->
 <meta property="og:type" content="profile">
+<meta property="og:site_name" content="Nguyễn Minh Thúy | English Teacher Portfolio">
 <meta property="og:title" content="Nguyễn Minh Thúy | English Teacher Portfolio">
 <meta property="og:description" content="Giáo viên tiếng Anh 5+ năm kinh nghiệm, TOEIC 800+, chuyên GrapeSEED & luyện thi TOEIC.">
+<meta property="og:url" content="https://example.com/">
 <meta property="og:locale" content="vi_VN">
-<!-- Gợi ý: thêm og:image trỏ tới 1 ảnh đại diện thật (URL tuyệt đối) để hiện ảnh preview khi chia sẻ link -->
-<!-- <meta property="og:image" content="https://your-domain.com/asset/img/og-cover.jpg"> -->
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://example.com/asset/img/profile.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="Nguyễn Minh Thúy - Giáo viên tiếng Anh">
+<meta property="profile:first_name" content="Thúy">
+<meta property="profile:last_name" content="Nguyễn">
+<!-- Gợi ý: đổi "https://example.com/" ở trên (canonical + og:url + og:image) thành domain thật khi deploy -->
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nguyễn Minh Thúy | English Teacher Portfolio">
 <meta name="twitter:description" content="Giáo viên tiếng Anh 5+ năm kinh nghiệm, TOEIC 800+, chuyên GrapeSEED & luyện thi TOEIC.">
+<meta name="twitter:image" content="https://example.com/asset/img/profile.jpg">
 
 <!-- Favicon (hoa hồng nhỏ, không cần file riêng) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23D6336C'/%3E%3Cpath d='M16 6c4 0 7 4 7 10s-3 10-7 10-7-4-7-10 3-10 7-10Z' fill='%23FCE7F0'/%3E%3C/svg%3E">
@@ -29,14 +43,40 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://example.com/#person",
   "name": "Nguyễn Minh Thúy",
+  "alternateName": "Minh Thuy Nguyen",
   "jobTitle": "English Teacher",
+  "description": "Giáo viên tiếng Anh 5+ năm kinh nghiệm, TOEIC 800+, chuyên GrapeSEED và luyện thi TOEIC.",
+  "url": "https://example.com/",
+  "image": "https://example.com/asset/img/profile.jpg",
   "worksFor": { "@type": "Organization", "name": "GrapeSEED" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Trường Đại học Sư phạm" },
   "email": "mailto:thuy.nguyen@example.com",
   "telephone": "+84388249616",
   "address": { "@type": "PostalAddress", "addressLocality": "Hà Nội", "addressCountry": "VN" },
+  "sameAs": [
+    "https://www.facebook.com/example",
+    "https://zalo.me/0388249616"
+  ],
   "knowsLanguage": ["vi", "en"],
-  "hasCredential": "TOEIC 800+"
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "name": "TOEIC 800+" },
+    { "@type": "EducationalOccupationalCredential", "name": "GrapeSEED Methodology Certification" },
+    { "@type": "EducationalOccupationalCredential", "name": "Nghiệp vụ Sư phạm Tiếng Anh" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://example.com/#home" },
+    { "@type": "ListItem", "position": 2, "name": "Giới thiệu", "item": "https://example.com/#about" },
+    { "@type": "ListItem", "position": 3, "name": "Kinh nghiệm", "item": "https://example.com/#experience" },
+    { "@type": "ListItem", "position": 4, "name": "Liên hệ", "item": "https://example.com/#contact" }
+  ]
 }
 </script>
 
@@ -61,11 +101,21 @@
         Kết quả giảng dạy (#results, có biểu đồ), Chứng chỉ
         (#certificates), Thư viện (#gallery), Đánh giá (#testimonials),
         Hỏi đáp (#faq) — sửa nội dung trực tiếp trong từng section.
-     7) SEO: đã có sẵn thẻ meta mô tả, Open Graph, favicon và dữ liệu
-        JSON-LD. Nhớ đổi "https://example.com/" (link rel="canonical")
-        thành domain thật khi bạn deploy trang này lên internet.
+     7) SEO: đã có sẵn thẻ meta mô tả, Open Graph, Twitter Card, favicon
+        và dữ liệu JSON-LD (Person + BreadcrumbList). Nhớ đổi MỌI chỗ
+        "https://example.com/" (canonical, og:url, og:image, JSON-LD)
+        thành domain thật khi bạn deploy trang này lên internet, để
+        nhà tuyển dụng tìm thấy bạn trên Google dễ hơn.
      8) IN TRANG: bấm Ctrl+P (hoặc Cmd+P) để in — trang tự ẩn hiệu ứng
-        cánh hoa, menu, nút nổi để bản in gọn gàng, giống hồ sơ.
+        cánh hoa, menu, nút nổi, khung chat để bản in gọn gàng.
+     9) TRỢ LÝ AI (góc dưới bên trái): trả lời tự động các câu hỏi
+        thường gặp (kinh nghiệm, học phí, lịch học, chứng chỉ...).
+        Câu hỏi ngoài phạm vi sẽ tự gợi ý nhắn Zalo / Facebook.
+        Sửa nội dung trả lời + số Zalo + link Facebook tại đầu file
+        ./asset/js/chatbot.js (mục CONFIG).
+    10) Mục Video giới thiệu (#video) và Lịch dạy (#schedule) là 2
+        section mới — sửa nội dung / nhúng video YouTube thật của bạn
+        tại phần có ghi "NHÚNG VIDEO CỦA BẠN VÀO ĐÂY".
      ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,18 +132,23 @@
   <div id="introGreeting" class="intro-greeting">
   </div>
 </div>
+<!-- Thanh tiến trình cuộn trang -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
 <!-- ================= HEADER ================= -->
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-[color:var(--pink-50)]/90 transition-shadow duration-300">
   <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
     <a href="#home" class="font-display text-2xl sm:text-3xl font-semibold text-[color:var(--rose-dark)]">Minh Thúy</a>
 
-    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-[color:var(--plum)]">
+    <nav class="hidden lg:flex items-center gap-4 text-sm font-medium text-[color:var(--plum)]">
       <a href="#home" class="nav-link" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
       <a href="#about" class="nav-link" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
       <a href="#services" class="nav-link" data-vi="Dịch vụ" data-en="Services">Dịch vụ</a>
       <a href="#skills" class="nav-link" data-vi="Kỹ năng" data-en="Skills">Kỹ năng</a>
       <a href="#experience" class="nav-link" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</a>
       <a href="#results" class="nav-link" data-vi="Kết quả" data-en="Results">Kết quả</a>
+      <a href="#video" class="nav-link" data-vi="Video" data-en="Video">Video</a>
+      <a href="#schedule" class="nav-link" data-vi="Lịch dạy" data-en="Schedule">Lịch dạy</a>
       <a href="#testimonials" class="nav-link" data-vi="Đánh giá" data-en="Testimonials">Đánh giá</a>
       <a href="#contact" class="nav-link" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
     </nav>
@@ -125,6 +180,8 @@
       <a href="#results" data-vi="Kết quả" data-en="Results">Kết quả</a>
       <a href="#certificates" data-vi="Chứng chỉ" data-en="Certificates">Chứng chỉ</a>
       <a href="#gallery" data-vi="Thư viện" data-en="Gallery">Thư viện</a>
+      <a href="#video" data-vi="Video" data-en="Video">Video</a>
+      <a href="#schedule" data-vi="Lịch dạy" data-en="Schedule">Lịch dạy</a>
       <a href="#testimonials" data-vi="Đánh giá" data-en="Testimonials">Đánh giá</a>
       <a href="#faq" data-vi="Hỏi đáp" data-en="FAQ">Hỏi đáp</a>
       <a href="#contact" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
@@ -164,10 +221,12 @@
         <a href="mailto:thuy.nguyen@example.com" aria-label="Email" class="w-10 h-10 rounded-full icon-circle flex items-center justify-center hover:scale-110 transition">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7L22 6"/></svg>
         </a>
-        <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full icon-circle flex items-center justify-center hover:scale-110 transition">
+        <!-- Đổi link Facebook thật của bạn (để trống dấu # sẽ không mở được) -->
+        <a href="https://www.facebook.com/example" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-full icon-circle flex items-center justify-center hover:scale-110 transition">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3H13.5V8.4c0-.87.24-1.46 1.5-1.46h1.6V4.32C16.3 4.22 15.3 4.1 14.1 4.1c-2.4 0-4 1.46-4 4.14v2.36H7.6v3h2.5V21h3.4z"/></svg>
         </a>
-        <a href="#" aria-label="Zalo" class="w-10 h-10 rounded-full icon-circle flex items-center justify-center hover:scale-110 transition">
+        <!-- Link Zalo tự động mở chat với số điện thoại của bạn -->
+        <a href="https://zalo.me/0388249616" target="_blank" rel="noopener" aria-label="Zalo" class="w-10 h-10 rounded-full icon-circle flex items-center justify-center hover:scale-110 transition">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9 9h.01M15 9h.01M8 14c1 1.2 2.5 2 4 2s3-.8 4-2"/></svg>
         </a>
       </div>
@@ -742,6 +801,36 @@
   </div>
 </section>
 
+<!-- ================= VIDEO INTRO ================= -->
+<section id="video" class="relative py-24 bg-[color:var(--pink-100)]/60 overflow-hidden">
+  <div class="blob w-72 h-72 bg-[color:var(--pink-200)] bottom-[-3rem] right-[-3rem]"></div>
+  <div class="relative max-w-4xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+      <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Video" data-en="Video">Video</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold mb-4" data-vi="Video giới thiệu bản thân" data-en="My introduction video">Video giới thiệu bản thân</h2>
+      <p class="text-[color:var(--plum-muted)]" data-vi="Một đoạn video ngắn giúp nhà tuyển dụng hình dung phong cách giảng dạy và con người tôi rõ hơn." data-en="A short video to help recruiters get a real sense of my teaching style and personality.">Một đoạn video ngắn giúp nhà tuyển dụng hình dung phong cách giảng dạy và con người tôi rõ hơn.</p>
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <!-- NHÚNG VIDEO CỦA BẠN VÀO ĐÂY: thay khối .video-frame bên dưới bằng
+           thẻ <iframe> nhúng YouTube thật, ví dụ:
+           <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Giới thiệu" allowfullscreen></iframe>
+           Khi đó có thể xoá khối .video-placeholder bên dưới. -->
+      <div class="video-frame">
+        <div class="video-placeholder" id="video-placeholder" role="button" tabindex="0" aria-label="Phát video giới thiệu">
+          <img src="asset/img/profile.jpg" alt="Video giới thiệu Nguyễn Minh Thúy" loading="lazy">
+          <div class="video-overlay">
+            <button class="video-play-btn" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <p class="text-white text-sm font-medium mt-4" data-vi="Nhấn để xem video giới thiệu (thay bằng video thật của bạn)" data-en="Click to watch the intro video (replace with your real video)">Nhấn để xem video giới thiệu (thay bằng video thật của bạn)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= TESTIMONIALS ================= -->
 <section id="testimonials" class="relative py-24 bg-[color:var(--pink-100)]/60 overflow-hidden">
   <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
@@ -839,6 +928,61 @@
         <div class="faq-answer">
           <p data-vi="Học phí phụ thuộc vào hình thức (1-1, nhóm nhỏ, luyện thi) và số buổi/tuần. Hãy nhắn tin ở phần Liên hệ để mình tư vấn lịch học và chi phí phù hợp nhất với bạn." data-en="Fees depend on the format (1-on-1, small group, exam prep) and sessions per week. Message me in the Contact section for a schedule and price that best fit you.">Học phí phụ thuộc vào hình thức (1-1, nhóm nhỏ, luyện thi) và số buổi/tuần. Hãy nhắn tin ở phần Liên hệ để mình tư vấn lịch học và chi phí phù hợp nhất với bạn.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCHEDULE / BOOKING ================= -->
+<section id="schedule" class="relative py-24 overflow-hidden">
+  <div class="blob w-72 h-72 bg-[color:var(--gold)]/20 top-[-3rem] left-[-3rem]"></div>
+  <div class="relative max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="uppercase tracking-[0.25em] text-xs font-semibold text-[color:var(--rose)] mb-3" data-vi="Lịch dạy" data-en="Schedule">Lịch dạy</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold mb-4" data-vi="Lịch trống & Đặt lịch tư vấn" data-en="Availability & Booking">Lịch trống &amp; Đặt lịch tư vấn</h2>
+      <p class="text-[color:var(--plum-muted)]" data-vi="Khung giờ tham khảo hàng tuần — nhắn tin để mình xếp lịch phù hợp nhất với bạn." data-en="Reference weekly time slots — message me to arrange the schedule that fits you best.">Khung giờ tham khảo hàng tuần — nhắn tin để mình xếp lịch phù hợp nhất với bạn.</p>
+    </div>
+
+    <div class="reveal reveal-delay-1 schedule-card">
+      <div class="schedule-table-wrap">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th data-vi="Khung giờ" data-en="Time">Khung giờ</th>
+              <th data-vi="T2" data-en="Mon">T2</th>
+              <th data-vi="T3" data-en="Tue">T3</th>
+              <th data-vi="T4" data-en="Wed">T4</th>
+              <th data-vi="T5" data-en="Thu">T5</th>
+              <th data-vi="T6" data-en="Fri">T6</th>
+              <th data-vi="T7" data-en="Sat">T7</th>
+              <th data-vi="CN" data-en="Sun">CN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-cell" data-vi="Sáng" data-en="Morning">Sáng</td>
+              <td class="slot-free"></td><td class="slot-busy"></td><td class="slot-free"></td><td class="slot-busy"></td><td class="slot-free"></td><td class="slot-free"></td><td class="slot-off"></td>
+            </tr>
+            <tr>
+              <td class="time-cell" data-vi="Chiều" data-en="Afternoon">Chiều</td>
+              <td class="slot-busy"></td><td class="slot-free"></td><td class="slot-busy"></td><td class="slot-free"></td><td class="slot-busy"></td><td class="slot-free"></td><td class="slot-off"></td>
+            </tr>
+            <tr>
+              <td class="time-cell" data-vi="Tối" data-en="Evening">Tối</td>
+              <td class="slot-free"></td><td class="slot-free"></td><td class="slot-free"></td><td class="slot-free"></td><td class="slot-free"></td><td class="slot-off"></td><td class="slot-off"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex flex-wrap items-center gap-5 mt-6 text-xs font-medium text-[color:var(--plum-muted)]">
+        <span class="flex items-center gap-2"><span class="legend-dot slot-free"></span><span data-vi="Còn lịch trống" data-en="Available">Còn lịch trống</span></span>
+        <span class="flex items-center gap-2"><span class="legend-dot slot-busy"></span><span data-vi="Đã kín lịch" data-en="Fully booked">Đã kín lịch</span></span>
+        <span class="flex items-center gap-2"><span class="legend-dot slot-off"></span><span data-vi="Không nhận lớp" data-en="Not available">Không nhận lớp</span></span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 mt-8">
+        <a href="https://zalo.me/0388249616" target="_blank" rel="noopener" class="btn-primary rounded-full px-7 py-3.5 font-semibold text-center" data-vi="Đặt lịch qua Zalo" data-en="Book via Zalo">Đặt lịch qua Zalo</a>
+        <a href="#contact" class="btn-outline rounded-full px-7 py-3.5 font-semibold text-center" data-vi="Gửi yêu cầu qua form" data-en="Send a request via form">Gửi yêu cầu qua form</a>
       </div>
     </div>
   </div>
@@ -954,7 +1098,46 @@
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
 </button>
 
+<!-- ================= AI CHAT WIDGET ================= -->
+<!-- Trợ lý trả lời tự động: sửa nội dung Hỏi & Đáp + số Zalo + link Facebook
+     trong file ./asset/js/chatbot.js (mục CONFIG ở đầu file). -->
+<button id="chat-toggle" class="chat-toggle" aria-label="Mở trợ lý AI" aria-expanded="false">
+  <svg class="chat-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <svg class="chat-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  <span id="chat-badge" class="chat-badge">1</span>
+</button>
+
+<div id="chat-panel" class="chat-panel" role="dialog" aria-label="Trợ lý AI" aria-hidden="true">
+  <div class="chat-header">
+    <div class="chat-header-avatar">
+      <img src="asset/img/profile.jpg" alt="Trợ lý AI của Minh Thúy">
+      <span class="chat-online-dot"></span>
+    </div>
+    <div class="chat-header-info">
+      <p class="chat-header-name" data-vi="Trợ lý của Minh Thúy" data-en="Minh Thúy's Assistant">Trợ lý của Minh Thúy</p>
+      <p class="chat-header-status" data-vi="Thường trả lời ngay" data-en="Usually replies instantly">Thường trả lời ngay</p>
+    </div>
+    <button id="chat-close" class="chat-close-btn" aria-label="Đóng chat">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div id="chat-messages" class="chat-messages"></div>
+
+  <div id="chat-quick-replies" class="chat-quick-replies"></div>
+
+  <form id="chat-form" class="chat-input-bar">
+    <input id="chat-input" type="text" autocomplete="off"
+           data-vi-placeholder="Nhập câu hỏi của bạn..." data-en-placeholder="Type your question..."
+           placeholder="Nhập câu hỏi của bạn...">
+    <button type="submit" class="chat-send-btn" aria-label="Gửi">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
+    </button>
+  </form>
+</div>
+
 <script src="./asset/js/main.js"></script>
 <script src="./asset/js/intro-greeting.js"></script>
+<script src="./asset/js/chatbot.js"></script>
 </body>
 </html>

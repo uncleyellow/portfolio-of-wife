@@ -291,6 +291,73 @@
     });
   });
 
+  /* ---------- scroll progress bar ---------- */
+  const scrollProgress = document.getElementById('scroll-progress');
+  if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      scrollProgress.style.width = pct + '%';
+    });
+  }
+
+  /* ---------- polaroid tilt effect (desktop, mouse only) ---------- */
+  const tiltEl = document.querySelector('.polaroid');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (tiltEl && !prefersReducedMotion && window.matchMedia('(pointer:fine)').matches) {
+    const wrap = tiltEl.parentElement;
+    wrap.addEventListener('mousemove', (e) => {
+      const rect = tiltEl.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      tiltEl.style.transform = `rotate(-4deg) rotateX(${y * -8}deg) rotateY(${x * 10}deg) scale(1.02)`;
+    });
+    wrap.addEventListener('mouseleave', () => {
+      tiltEl.style.transform = '';
+    });
+  }
+
+  /* ---------- small toast helper (used by video placeholder, chatbot copy, etc.) ---------- */
+  window.showToast = function (viText, enText) {
+    const lang = document.documentElement.lang === 'en' ? 'en' : 'vi';
+    const text = lang === 'en' ? enText : viText;
+    let toast = document.getElementById('mini-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'mini-toast';
+      toast.style.cssText = 'position:fixed;left:50%;bottom:6.5rem;transform:translateX(-50%) translateY(20px);' +
+        'background:#3B0A28;color:#fff;padding:.65rem 1.1rem;border-radius:999px;font-size:.82rem;' +
+        'z-index:200;opacity:0;transition:opacity .3s ease, transform .3s ease;box-shadow:0 12px 24px -10px rgba(0,0,0,.4);pointer-events:none;';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = text;
+    requestAnimationFrame(() => {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(20px)';
+    }, 2600);
+  };
+
+  /* ---------- video intro placeholder ---------- */
+  const videoPlaceholder = document.getElementById('video-placeholder');
+  if (videoPlaceholder) {
+    const openVideo = () => {
+      window.showToast(
+        'Đây là bản demo — hãy nhúng video YouTube thật của bạn (xem ghi chú trong index.html).',
+        'This is a demo — embed your real YouTube video (see the note in index.html).'
+      );
+    };
+    videoPlaceholder.addEventListener('click', openVideo);
+    videoPlaceholder.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openVideo(); }
+    });
+  }
+
   /* ---------- testimonial carousel nav buttons ---------- */
   const testiTrack = document.getElementById('testi-track');
   const testiPrev = document.getElementById('testi-prev');
