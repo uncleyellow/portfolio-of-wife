@@ -77,8 +77,8 @@ const langButtons = {
 };
 
 function setActiveLangButton(lang) {
-	langButtons.vi.forEach(b => b && b.classList.toggle('bg-[color:var(--rose)]', lang === 'vi') && b.classList.toggle('text-white', lang === 'vi'));
-	langButtons.en.forEach(b => b && b.classList.toggle('bg-[color:var(--rose)]', lang === 'en') && b.classList.toggle('text-white', lang === 'en'));
+	langButtons.vi.forEach(b => b && b.classList.toggle('bg-[color:var(--rose)]', lang === 'vi') && b.classList.toggle('text-dark', lang === 'vi'));
+	langButtons.en.forEach(b => b && b.classList.toggle('bg-[color:var(--rose)]', lang === 'en') && b.classList.toggle('text-dark', lang === 'en'));
 }
 
 function applyLang(lang) {
