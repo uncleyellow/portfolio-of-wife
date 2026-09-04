@@ -45,7 +45,7 @@ const statEls = document.querySelectorAll('[data-count]');
 const statObserver = new IntersectionObserver((entries) => {
 	entries.forEach(entry => {
 		if (entry.isIntersecting) {
-			animateCount(entry.target, parseInt(entry.target.dataset.count, 10));
+			animateCount(entry.target, Number.parseInt(entry.target.dataset.count, 10));
 			statObserver.unobserve(entry.target);
 		}
 	});
@@ -60,7 +60,7 @@ const skillObserver = new IntersectionObserver((entries) => {
 			const block = entry.target;
 			const fill = block.querySelector('.progress-fill');
 			const percentLabel = block.querySelector('.skill-percent');
-			const target = parseInt(fill.dataset.target, 10);
+			const target = Number.parseInt(fill.dataset.target, 10);
 			fill.style.width = target + '%';
 			animateCount({ set textContent(v) { percentLabel.textContent = v + '%'; } }, target, 1400);
 			skillObserver.unobserve(block);

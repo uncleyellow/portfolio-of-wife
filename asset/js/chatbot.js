@@ -38,8 +38,8 @@
 		, {
 			id: 'certificates'
 			, keywords: ['chung chi', 'bang cap', 'toeic', 'certificate', 'qualification', 'degree']
-			, vi: 'Thúy có chứng chỉ TOEIC 800+, Chứng nhận Phương pháp GrapeSEED, và Chứng chỉ Nghiệp vụ Sư phạm Tiếng Anh. Xem đầy đủ tại mục "Chứng chỉ" phía trên nhé.'
-			, en: 'Thúy holds a TOEIC 800+ certificate, GrapeSEED Methodology Certification, and an English Pedagogy Certificate. See the full list in the “Certificates” section above.'
+			, vi: 'Thúy có chứng chỉ TOEIC 850+, Chứng nhận Phương pháp GrapeSEED, và Chứng chỉ Nghiệp vụ Sư phạm Tiếng Anh. Xem đầy đủ tại mục "Chứng chỉ" phía trên nhé.'
+			, en: 'Thúy holds a TOEIC 850+ certificate, GrapeSEED Methodology Certification, and an English Pedagogy Certificate. See the full list in the “Certificates” section above.'
     }
 		, {
 			id: 'format'
